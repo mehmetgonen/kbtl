@@ -1,0 +1,15 @@
+This package contains Matlab implementations of the algorithms proposed in "Kernelized Bayesian Transfer Learning", which is appearing in AAAI 2014.
+
+demo_binary.m file shows how to use the binary classification algorithm.
+demo_multiclass.m file shows how to use the multiclass classification algorithm.
+
+KBTL methods
+------------
+* kbtl_supervised_classification_variational_train.m => training procedure for binary classification
+* kbtl_supervised_classification_variational_test.m => test procedure for binary classification
+* kbtl_supervised_multilabel_classification_variational_train.m => training procedure for multiclass classification
+* kbtl_supervised_multilabel_classification_variational_test.m => test procedure for multiclass classification
+
+If you use any of the algorithms implemented in this package, please cite the following paper:
+
+Mehmet Gonen and Adam A. Margolin. Kernelized Bayesian Transfer Learning. Proceedings of the 28th AAAI Conference on Artificial Intelligence (AAAI 2014), Québec City, Québec, Canada, 2014.
