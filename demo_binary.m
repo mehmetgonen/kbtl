@@ -32,7 +32,7 @@ parameters.R = 2;
 parameters.seed = 1606;
 
 %set the standard deviation of hidden representations
-parameters.sigmah = 0.1;
+parameters.sigma_h = 0.1;
 
 %set the number of tasks
 T = ??;

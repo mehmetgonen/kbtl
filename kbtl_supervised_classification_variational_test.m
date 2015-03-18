@@ -9,23 +9,23 @@ function prediction = kbtl_supervised_classification_variational_test(K, state)
 
     for t = 1:T
         if N(t) > 0
-            prediction.H{t}.mean = state.A{t}.mean' * K{t};
+            prediction.H{t}.mu = state.A{t}.mu' * K{t};
         end
     end
 
     prediction.f = cell(1, T);
     for t = 1:T
         if N(t) > 0
-            prediction.f{t}.mean = [ones(1, N(t)); prediction.H{t}.mean]' * state.bw.mean;
-            prediction.f{t}.covariance = 1 + diag([ones(1, N(t)); prediction.H{t}.mean]' * state.bw.covariance * [ones(1, N(t)); prediction.H{t}.mean]);
+            prediction.f{t}.mu = [ones(1, N(t)); prediction.H{t}.mu]' * state.bw.mu;
+            prediction.f{t}.sigma = 1 + diag([ones(1, N(t)); prediction.H{t}.mu]' * state.bw.sigma * [ones(1, N(t)); prediction.H{t}.mu]);
         end
     end
     
     prediction.p = cell(1, T);
     for t = 1:T
         if N(t) > 0
-            pos = 1 - normcdf((+state.parameters.margin - prediction.f{t}.mean) ./ prediction.f{t}.covariance);
-            neg = normcdf((-state.parameters.margin - prediction.f{t}.mean) ./ prediction.f{t}.covariance);
+            pos = 1 - normcdf((+state.parameters.margin - prediction.f{t}.mu) ./ prediction.f{t}.sigma);
+            neg = normcdf((-state.parameters.margin - prediction.f{t}.mu) ./ prediction.f{t}.sigma);
             prediction.p{t} = pos ./ (pos + neg);
         end
     end
