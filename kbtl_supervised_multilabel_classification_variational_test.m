@@ -1,5 +1,3 @@
-% Mehmet Gonen (mehmet.gonen@gmail.com)
-
 function prediction = kbtl_supervised_multilabel_classification_variational_test(K, state)
     T = length(K);
     N = zeros(T, 1);
